@@ -22,7 +22,10 @@ appointmentsRouter.post('/', (req, resp) => {
   if (findAppointmentInSameDate)
     return resp.status(400).json({ message: 'This date not available' });
 
-  const appointment = appointmentRepository.create(provider, parsedDate);
+  const appointment = appointmentRepository.create({
+    provider,
+    date: parsedDate,
+  });
 
   return resp.json(appointment);
 });
