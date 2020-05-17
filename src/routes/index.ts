@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import appointmentsRouter from './appointments';
+import appointmentsRouter from './appointments.route';
 
 const routes = Router();
 
