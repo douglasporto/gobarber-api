@@ -23,9 +23,8 @@ class CreateUserService {
       password: hashedPassword,
     });
 
-    delete user.password;
-
     await userRepository.save(user);
+    delete user.password;
 
     return user;
   }

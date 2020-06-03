@@ -39,7 +39,7 @@ export default class UpAppointmentProvider1590627217960
       new TableColumn({
         name: 'provider',
         type: 'varchar',
-        isNullable: false,
+        isNullable: true,
       }),
     );
   }
