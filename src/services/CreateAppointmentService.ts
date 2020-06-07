@@ -3,6 +3,8 @@ import { getCustomRepository } from 'typeorm';
 import AppointmentRepository from '../repositories/AppointmentRepository';
 import Appointment from '../models/Appointments';
 
+import AppError from '../errors/AppError';
+
 interface Request {
   provider_id: string;
   date: Date;
@@ -16,7 +18,8 @@ class CreateAppointmentService {
     const findAppointmentInSameDate = await appointmentRepository.findByDate(
       appointmentDate,
     );
-    if (findAppointmentInSameDate) throw Error('This date not available');
+    if (findAppointmentInSameDate)
+      throw new AppError('This date not available');
 
     const appointment = appointmentRepository.create({
       provider_id,
